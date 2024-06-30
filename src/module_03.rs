@@ -59,7 +59,7 @@ pub mod understanding_closures {
     }
 
     pub fn capturing_the_environment() {
-        let y  = 5;
+        let y = 5;
         let add_y = |x| x + y;
         let a = add_y(10);
         println!("The value of a is: {}\n", a);
@@ -83,5 +83,88 @@ pub mod understanding_closures {
 
         // the following line will produce error, because `message` is now OWNED by the `thread` closure
         // println!("{}", message);
+    }
+
+    fn call_with_one<F>(func: F) -> usize
+        where F: Fn(usize) -> usize
+    {
+        func(1)
+    }
+
+    pub fn different_types_of_closures() {
+        let x = 5;
+        // `print_x` implements the trait `Fn`. This trait applies to closures that don't capture
+        // variables at all, they can be called multiple times without changing their environment.
+        let print_x = || println!("{}", x);
+        print_x();
+        print_x();
+        println!();
+
+        // another example of `Fn` trait
+        let double = |x| x * 2;
+        assert_eq!(call_with_one(double), 2);
+        let result = call_with_one(double) == 2;
+        if result {
+            println!("call_with_once(double) == 2: {}\n", result);
+        }
+
+        // example of `FnMut`
+        let mut x = 5;
+        let mut increment_x = || x += 1;
+        increment_x();
+        increment_x();
+        println!("x: {}", x);
+
+        // another example of `FnMut`
+        fn do_twice<F>(mut func: F) where F: FnMut() {
+            func();
+            func();
+        }
+
+        let mut val: usize = 1;
+        {
+            let add_two_to_val = || val += 2;
+            do_twice(add_two_to_val);
+        }
+        assert_eq!(val, 5);
+        println!("adding {} to {} twice, results in {}\n", 2, 1, val);
+
+        // example of `FnOnce`
+        let s = "Hello".to_string();
+        let consume = move || {
+            let bytes = s.into_bytes();
+            println!("bytes: {:?}", bytes);
+        };
+        consume();
+
+        // any call to `consume()` after once it's been called, will produce error
+        // because the variable `s` has been moved to the closure and consumed
+        // consume();
+
+        // the following though, moves the value from `text` to `moved`, which just moves the ownership
+        let text = "Words".to_string();
+        let moved = text.into_bytes();
+        println!("moved: {:?}\n", moved);
+        // uncommenting the following line will produce error,
+        // this can be fixed by cloning instead of moving, like this
+        // let moved = text.clone().into_bytes();
+        // println!("text: {:?}", text);
+
+        // another example of `FnOnce`
+        fn consume_with_relish<F>(func: F) where F: FnOnce() -> String, {
+            // `func` consumes its captured variables, so it cannot be run more than once
+            println!("Consumed: {}", func());
+            println!("Delicious");
+
+            // Attempting to invoke `func()` again will throw a `use of moved value` error for `func`
+        }
+
+        let z = String::from("z");
+        let consume_and_return_z = move || z;
+        consume_with_relish(consume_and_return_z);
+
+        // `consume_and_return_z` can no longer be invoked at this point
+        // the following call will produce error
+        // consume_with_relish(consume_and_return_z);
     }
 }

@@ -13,5 +13,6 @@ fn main() {
     // Module 03 - Understanding Closures
     // understanding_closures::what_is_a_closure();
     // understanding_closures::closure_type_inference_and_annotation();
-    understanding_closures::capturing_the_environment();
+    // understanding_closures::capturing_the_environment();
+    understanding_closures::different_types_of_closures();
 }
