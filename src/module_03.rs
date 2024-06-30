@@ -1,4 +1,6 @@
 pub mod understanding_closures {
+    use std::thread;
+
     pub fn what_is_a_closure() {
         let add_one = |x| x + 1;
         let a = add_one(5);
@@ -54,5 +56,32 @@ pub mod understanding_closures {
         // like an `i32` or something else, uncommenting the following line will produce a compile
         // time error
         // print(5);
+    }
+
+    pub fn capturing_the_environment() {
+        let y  = 5;
+        let add_y = |x| x + y;
+        let a = add_y(10);
+        println!("The value of a is: {}\n", a);
+
+        let mut y = 5;
+        let mut add_y2 = |x| {
+            y += x;
+            y
+        };
+
+        let a = add_y2(10);
+        println!("The value of a is: {}", a);
+        println!("The value of y is: {}\n", y);
+
+        // move ownership of captured variable `message` to closure `thread`
+        let message = "Hello from a thread".to_string();
+        let thread = thread::spawn(move || {
+            println!("Message owned: {}", message);
+        });
+        thread.join().unwrap();
+
+        // the following line will produce error, because `message` is now OWNED by the `thread` closure
+        // println!("{}", message);
     }
 }
