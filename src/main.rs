@@ -11,5 +11,6 @@ fn main() {
     // intro_fp::what_is_functional_programming();
 
     // Module 03 - Understanding Closures
-    understanding_closures::what_is_a_closure();
+    // understanding_closures::what_is_a_closure();
+    understanding_closures::closure_type_inference_and_annotation();
 }
