@@ -7,6 +7,7 @@ mod module_04;
 use module_02::introducing_functional_programming as intro_fp;
 use module_03::understanding_closures;
 use module_04::working_with_iterators_and_lazy_evaluation;
+use module_04::working_with_iterators_and_lazy_evaluation_v2;
 
 fn main() {
     // Module 02 - Introducing Functional Programming
@@ -24,5 +25,6 @@ fn main() {
     // working_with_iterators_and_lazy_evaluation::what_are_iterators();
     // working_with_iterators_and_lazy_evaluation::what_are_iterators_v2();
     // working_with_iterators_and_lazy_evaluation::what_are_iterators_v3();
-    working_with_iterators_and_lazy_evaluation::what_are_iterators_v4();
+    // working_with_iterators_and_lazy_evaluation::what_are_iterators_v4();
+    working_with_iterators_and_lazy_evaluation_v2::understanding_the_iterator_trait();
 }

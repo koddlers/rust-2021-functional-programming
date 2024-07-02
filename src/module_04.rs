@@ -72,3 +72,50 @@ pub mod working_with_iterators_and_lazy_evaluation {
         }
     }
 }
+
+pub mod working_with_iterators_and_lazy_evaluation_v2 {
+    #[derive(Debug)]
+    struct Counter {
+        count: u32,
+    }
+
+    impl Counter {
+        fn new() -> Counter {
+            Counter { count: 0 }
+        }
+    }
+
+    impl Iterator for Counter {
+        type Item = u32;
+
+        fn next(&mut self) -> Option<Self::Item> {
+            self.count += 1;
+            if self.count < 3 {
+                Some(self.count)
+            } else {
+                None
+            }
+        }
+    }
+
+    pub fn understanding_the_iterator_trait() {
+        let counter = Counter::new();
+        for i in counter.take(10) {
+            println!("Counter is equal to {}", i);
+        }
+        println!();
+
+        let counter_sum = Counter::new();
+        println!("The sum of all values in `counter_sum`: {}\n", counter_sum.sum::<u32>());
+
+        let mut counter_next = Counter::new();
+        println!("The next value in `counter_next` is {}", counter_next.next().unwrap());
+        println!("The next value in `counter_next` is {}\n", counter_next.next().unwrap());
+
+        let counter = Counter::new();
+        let counter_iter = counter.into_iter();
+        for num in counter_iter {
+            println!("Num in counter is equal to {}", num);
+        }
+    }
+}
