@@ -167,4 +167,37 @@ pub mod understanding_closures {
         // the following call will produce error
         // consume_with_relish(consume_and_return_z);
     }
+
+    pub fn using_closures_in_higher_order_functions() {
+        // call with either value of `x`
+        let x = None;
+        // let x = Some(5);
+        let y = x.unwrap_or_else(|| {
+            let z = 10;
+            z * 2
+        });
+        println!("{}", y);
+    }
+
+    #[derive(Debug)]
+    struct Rectangle {
+        width: u32,
+        height: u32,
+    }
+
+    pub fn using_closures_in_higher_order_functions_v2() {
+        let mut list = [
+            Rectangle { width: 10, height: 1 },
+            Rectangle { width: 3, height: 5 },
+            Rectangle { width: 7, height: 12 },
+        ];
+        println!("Before sorting:\n{:#?}\n", list);
+
+        // use the `sort_by_key` method to order the rectangles by width
+        // the closure `|r| r.width` is passed to `sort_by_key` to specify the key for sorting
+        list.sort_by_key(|r| r.width);
+
+        // print the sorted list of rectangles
+        println!("After sorting:\n{:#?}", list);
+    }
 }

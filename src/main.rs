@@ -14,5 +14,7 @@ fn main() {
     // understanding_closures::what_is_a_closure();
     // understanding_closures::closure_type_inference_and_annotation();
     // understanding_closures::capturing_the_environment();
-    understanding_closures::different_types_of_closures();
+    // understanding_closures::different_types_of_closures();
+    // understanding_closures::using_closures_in_higher_order_functions();
+    understanding_closures::using_closures_in_higher_order_functions_v2();
 }
