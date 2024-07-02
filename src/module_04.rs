@@ -184,4 +184,59 @@ pub mod working_with_iterators_and_lazy_evaluation_v3 {
             println!("Even number squared: {}", even);
         }
     }
+
+    pub fn common_methods_of_the_iterator_trait() {
+        let sum = vec![1, 2, 3, 4, 5].iter().fold(0, |acc, x| acc + x);
+        println!("Sum: {}\n", sum);
+
+        // all()
+        let numbers = vec![2, 4, 6, 8, 10];
+        let all_even = numbers.iter().all(|&x| x % 2 == 0);
+        println!("Are all numbers in the list even?: {}", all_even);
+
+        // any()
+        let any_odd = numbers.iter().any(|x| x % 2 == 1);
+        println!("Is any number in the list odd?: {}\n", any_odd);
+
+        // count()
+        let total = numbers.iter().count();
+        println!("numbers.count(): {}\n", total);
+
+        // zip()
+        let names = vec!["Alice", "Bob", "Marshal"];
+        let scores = vec![85, 90, 99];
+        let paired = names.iter().zip(scores.iter());
+        for (name, score) in paired {
+            println!("{name} scored {score} points");
+        }
+        println!();
+
+        // chain()
+        let first = vec![1, 2, 3];
+        let second = vec![4, 5, 6, 7];
+        let chained = first.iter().chain(second.iter());
+        println!("first and second chained together: {:?}", chained);
+        for item in chained {
+            println!("{item}");
+        }
+        println!();
+
+        // peekable()
+        let mut numbers = vec![1, 2, 3, 4, 5].into_iter().peekable();
+        if let Some(&first) = numbers.peek() {
+            println!("First number is: {}", first);
+        }
+        for num in numbers {
+            println!("{}", num);
+        }
+        println!();
+
+        // `skip()` and `take()`
+        let numbers = vec![1, 2, 3, 4, 5].into_iter();
+        let skipped_and_taken = numbers.skip(1).take(3);
+        println!("skipped_and_taken: {:?}", skipped_and_taken);
+        for num in skipped_and_taken {
+            println!("{num}");
+        }
+    }
 }

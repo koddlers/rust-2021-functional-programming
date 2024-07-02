@@ -33,5 +33,6 @@ fn main() {
     // working_with_iterators_and_lazy_evaluation_v3::consuming_adaptors_v3();
     // working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors();
     // working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors_v2();
-    working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors_v3();
+    // working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors_v3();
+    working_with_iterators_and_lazy_evaluation_v3::common_methods_of_the_iterator_trait();
 }
