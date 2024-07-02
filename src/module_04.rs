@@ -119,3 +119,39 @@ pub mod working_with_iterators_and_lazy_evaluation_v2 {
         }
     }
 }
+
+pub mod working_with_iterators_and_lazy_evaluation_v3 {
+    pub fn consuming_adaptors() {
+        let v = vec![1, 2, 3, 4, 5];
+        let iter = v.iter();
+        // `collect()` is a basic consuming adaptor
+        let collected: Vec<_> = iter.collect();
+
+        for item in collected {
+            println!("Item is {}", item);
+        }
+    }
+
+    pub fn consuming_adaptors_v2() {
+        let v = vec![1, 2, 3, 4, 5];
+
+        // `map()` is lazy, and is not executed until the iterator `v_squared` it produces is used
+        let v_squared = v.iter().map(|x| {
+            let result = x * x;
+            println!("Squaring {} is {}", x, result);
+            result
+        });
+        println!("Finished creating the iterator");
+
+        let collected: Vec<_> = v_squared.collect();
+        println!("Finished collecting into a vector");
+        println!("{:?}", collected);
+    }
+
+    pub fn consuming_adaptors_v3() {
+        let v = vec![1, 2, 3, 4, 5];
+        let iter = v.iter();
+        let total: i32 = iter.sum();
+        println!("total is {}", total);
+    }
+}
