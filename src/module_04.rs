@@ -154,4 +154,34 @@ pub mod working_with_iterators_and_lazy_evaluation_v3 {
         let total: i32 = iter.sum();
         println!("total is {}", total);
     }
+
+    pub fn iterator_adaptors() {
+        let v = vec![1, 2, 3, 4, 5];
+        let iter = v.iter();
+        let squared: Vec<_> = iter.map(|x| x * x).collect();
+
+        for item in squared {
+            println!("Item is {}", item);
+        }
+    }
+
+    pub fn iterator_adaptors_v2() {
+        let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let iter = v.iter();
+        let evens: Vec<_> = iter.filter(|x| *x % 2 == 0).collect();
+
+        for even in evens {
+            println!("Even number: {}", even);
+        }
+    }
+
+    pub fn iterator_adaptors_v3() {
+        let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let iter = v.iter();
+        let evens: Vec<_> = iter.map(|x| x * x).filter(|x| *x % 2 == 0).collect();
+
+        for even in evens {
+            println!("Even number squared: {}", even);
+        }
+    }
 }

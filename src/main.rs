@@ -30,5 +30,8 @@ fn main() {
     // working_with_iterators_and_lazy_evaluation_v2::understanding_the_iterator_trait();
     // working_with_iterators_and_lazy_evaluation_v3::consuming_adaptors();
     // working_with_iterators_and_lazy_evaluation_v3::consuming_adaptors_v2();
-    working_with_iterators_and_lazy_evaluation_v3::consuming_adaptors_v3();
+    // working_with_iterators_and_lazy_evaluation_v3::consuming_adaptors_v3();
+    // working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors();
+    // working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors_v2();
+    working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors_v3();
 }
