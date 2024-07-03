@@ -3,12 +3,14 @@
 mod module_02;
 mod module_03;
 mod module_04;
+mod module_05;
 
 use module_02::introducing_functional_programming as intro_fp;
 use module_03::understanding_closures;
 use module_04::working_with_iterators_and_lazy_evaluation;
 use module_04::working_with_iterators_and_lazy_evaluation_v2;
 use module_04::working_with_iterators_and_lazy_evaluation_v3;
+use module_05::exploring_additional_topics;
 
 fn main() {
     // Module 02 - Introducing Functional Programming
@@ -34,5 +36,8 @@ fn main() {
     // working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors();
     // working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors_v2();
     // working_with_iterators_and_lazy_evaluation_v3::iterator_adaptors_v3();
-    working_with_iterators_and_lazy_evaluation_v3::common_methods_of_the_iterator_trait();
+    // working_with_iterators_and_lazy_evaluation_v3::common_methods_of_the_iterator_trait();
+
+    // Module 05 - Exploring Additional Topics
+    exploring_additional_topics::immutability();
 }
