@@ -28,4 +28,20 @@ pub mod exploring_additional_topics {
 
         println!("Result: {}", result);
     }
+
+    enum TrafficLight {
+        Red,
+        Yellow,
+        Green,
+    }
+
+    pub fn pattern_matching() {
+        let light = TrafficLight::Red;
+
+        match light {
+            TrafficLight::Red => println!("Stop"),
+            TrafficLight::Yellow => println!("Slow down"),
+            TrafficLight::Green => println!("Go")
+        }
+    }
 }

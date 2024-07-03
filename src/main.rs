@@ -41,5 +41,6 @@ fn main() {
     // Module 05 - Exploring Additional Topics
     // exploring_additional_topics::immutability();
     // exploring_additional_topics::higher_order_functions();
-    exploring_additional_topics::higher_order_functions_v2();
+    // exploring_additional_topics::higher_order_functions_v2();
+    exploring_additional_topics::pattern_matching();
 }
