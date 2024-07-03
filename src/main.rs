@@ -42,5 +42,7 @@ fn main() {
     // exploring_additional_topics::immutability();
     // exploring_additional_topics::higher_order_functions();
     // exploring_additional_topics::higher_order_functions_v2();
-    exploring_additional_topics::pattern_matching();
+    // exploring_additional_topics::pattern_matching();
+    // exploring_additional_topics::result_and_option_types();
+    exploring_additional_topics::result_and_option_types_v2();
 }

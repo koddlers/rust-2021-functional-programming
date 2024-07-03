@@ -44,4 +44,52 @@ pub mod exploring_additional_topics {
             TrafficLight::Green => println!("Go")
         }
     }
+
+    // this is the code in the tutorial, but the following variant works too
+    // fn divide(numerator: f64, denominator: f64) -> Result<f64, &'static str> {
+    //     if denominator == 0.0 {
+    //         Err("Cannot divide by zero!")
+    //     } else {
+    //         Ok(numerator / denominator)
+    //     }
+    // }
+
+    // Changes:
+    //     1. no use of lifetime specifiers (in the form of `'static`)
+    //     2. use of the `String` struct instead of `str` slice (in the form of `&str`)
+    fn divide(numerator: f64, denominator: f64) -> Result<f64, String> {
+        if denominator == 0.0 {
+            Err(String::from("Cannot divide by zero!"))
+        } else {
+            Ok(numerator / denominator)
+        }
+    }
+
+    pub fn result_and_option_types() {
+        // use either of the `result` declarations
+        let result = divide(2.0, 3.0);
+        // let result = divide(2.0, 0.0);
+        match result {
+            Ok(res) => println!("Result: {res}"),
+            Err(err) => println!("Error: {err}")
+        }
+    }
+
+    pub fn result_and_option_types_v2() {
+        let mut numbers = vec![1, 2, 3].into_iter();
+
+        let first = numbers.next();     // returns Some(1)
+        let second = numbers.next();    // returns Some(2)
+        let third = numbers.next();     // returns Some(3)
+        let fourth = numbers.next();    // returns None
+
+        println!("{:?}", first);
+        // we can call `unwrap()` here because we know a value is present in `second` by looking
+        // at the `numbers` vector, BUT this is unsafe, if there were no value, it would panic
+        println!("{}", second.unwrap());
+        // it's rather safe to use the `debug format` instead (denoted by `{:?}`)
+        println!("{:?}", second);
+        println!("{third:?}");
+        println!("{fourth:?}");
+    }
 }
