@@ -39,5 +39,7 @@ fn main() {
     // working_with_iterators_and_lazy_evaluation_v3::common_methods_of_the_iterator_trait();
 
     // Module 05 - Exploring Additional Topics
-    exploring_additional_topics::immutability();
+    // exploring_additional_topics::immutability();
+    // exploring_additional_topics::higher_order_functions();
+    exploring_additional_topics::higher_order_functions_v2();
 }
